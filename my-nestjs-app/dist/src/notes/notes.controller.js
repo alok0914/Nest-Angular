@@ -12,33 +12,60 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CatsController = void 0;
+exports.NotesController = void 0;
 const common_1 = require("@nestjs/common");
-let CatsController = class CatsController {
-    findAll(request) {
-        return 'This action returns all notes';
+const create_notes_dto_1 = require("../dto/create-notes.dto");
+const notes_service_1 = require("../services/notes.service");
+let NotesController = class NotesController {
+    notesService;
+    constructor(notesService) {
+        this.notesService = notesService;
     }
-    create() {
-        return 'This action adds a new cat';
+    findAll(request) {
+        return this.notesService.findAll();
+    }
+    async createNote(createNotesDto) {
+        return this.notesService.create(createNotesDto);
+    }
+    findParticularNote(params) {
+        console.log(params.id);
+        return `This action returns a #${params.id} note`;
+    }
+    deleteNote(id) {
+        return `This action removes a #${id} note`;
     }
 };
-exports.CatsController = CatsController;
+exports.NotesController = NotesController;
 __decorate([
     (0, common_1.Get)(),
     __param(0, (0, common_1.Req)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", String)
-], CatsController.prototype, "findAll", null);
+    __metadata("design:returntype", void 0)
+], NotesController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Post)(),
-    (0, common_1.HttpCode)(204),
-    (0, common_1.Header)('Cache-Control', 'no-store'),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [create_notes_dto_1.CreateNotesDto]),
+    __metadata("design:returntype", Promise)
+], NotesController.prototype, "createNote", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", String)
-], CatsController.prototype, "create", null);
-exports.CatsController = CatsController = __decorate([
-    (0, common_1.Controller)('notes')
-], CatsController);
+], NotesController.prototype, "findParticularNote", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], NotesController.prototype, "deleteNote", null);
+exports.NotesController = NotesController = __decorate([
+    (0, common_1.Controller)('notes'),
+    __metadata("design:paramtypes", [notes_service_1.NotesService])
+], NotesController);
 //# sourceMappingURL=notes.controller.js.map
