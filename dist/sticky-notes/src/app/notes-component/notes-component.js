@@ -33,10 +33,11 @@ let NotesComponent = class NotesComponent {
     });
     getNotes() {
         this.notesSrc.getNotes().subscribe(notes => {
-            this.allNotes = notes?.notes;
+            this.allNotes = notes?.notesData;
+            this.changeDetection.markForCheck();
         });
     }
-    submitNote() {
+    createNote() {
         if (this.isEditMode) {
             this.editData.name = this.noteForm.value.name;
             this.editData.content = this.noteForm.value.content;
@@ -50,7 +51,12 @@ let NotesComponent = class NotesComponent {
         }
         else {
             this.notesSrc.createNotes(this.noteForm.value).subscribe((newItem) => {
-                this.allNotes = [...this.allNotes, newItem];
+                if (this.allNotes?.length > 0) {
+                    this.allNotes = [...this.allNotes, newItem.newNote];
+                }
+                else {
+                    this.allNotes = [newItem.newNote];
+                }
                 this.changeDetection.markForCheck();
                 this.noteForm.reset();
             });

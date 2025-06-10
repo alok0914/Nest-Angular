@@ -18,7 +18,7 @@ export declare class NotesComponent implements OnInit {
         content: FormControl<string>;
     }>;
     getNotes(): void;
-    submitNote(): void;
+    createNote(): void;
     editNote(data: any): void;
     deleteNote(data: any): void;
 }
