@@ -1,1 +1,0 @@
-{"version":3,"file":"app.js","sourceRoot":"","sources":["../../../../sticky-notes/src/app/app.ts"],"names":[],"mappings":";;;;;;;;;AAAA,wCAA0C;AAC1C,4CAA+C;AASxC,IAAM,GAAG,GAAT,MAAM,GAAG;CAAI,CAAA;AAAP,kBAAG;cAAH,GAAG;IAPf,IAAA,gBAAS,EAAC;QACT,QAAQ,EAAE,UAAU;QACpB,OAAO,EAAE,CAAC,qBAAY,CAAC;QACvB,WAAW,EAAE,YAAY;QACzB,QAAQ,EAAE,YAAY;KAEvB,CAAC;GACW,GAAG,CAAI"}
