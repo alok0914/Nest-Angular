@@ -2,7 +2,6 @@ import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Put, Res } from
 import { ObjectId } from 'mongoose';
 import { CreateNotesDto } from '../dto/create-notes.dto';
 import { NotesService } from 'src/services/notes.service';
-import { Notes } from '../schema/notes.schema';
 
 @Controller('notes')
 export class NotesController {
@@ -61,7 +60,7 @@ export class NotesController {
     @Delete('/:id')
     async deleteNote(@Res() response, @Param('id') id: ObjectId) {
         try {
-            const deletedNote = await this.notesService.deleteStudent(id);
+            const deletedNote = await this.notesService.deleteNote(id);
             return response.status(HttpStatus.OK).json({
                 message: 'Note deleted successfully',
                 deletedNote,

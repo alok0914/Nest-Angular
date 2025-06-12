@@ -8,16 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.App = void 0;
 const core_1 = require("@angular/core");
-const notes_component_1 = require("./notes-component/notes-component");
+const router_1 = require("@angular/router");
 let App = class App {
 };
 exports.App = App;
 exports.App = App = __decorate([
     (0, core_1.Component)({
         selector: 'app-root',
-        imports: [notes_component_1.NotesComponent],
+        imports: [router_1.RouterOutlet],
         templateUrl: './app.html',
-        styleUrl: './app.scss'
+        styleUrl: './app.scss',
     })
 ], App);
 //# sourceMappingURL=app.js.map

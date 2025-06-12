@@ -13,6 +13,7 @@ const notes_controller_1 = require("./notes/notes.controller");
 const notes_service_1 = require("./services/notes.service");
 const mongoose_1 = require("@nestjs/mongoose");
 const notes_schema_1 = require("./schema/notes.schema");
+const auth_module_1 = require("./auth/auth.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -21,6 +22,7 @@ exports.AppModule = AppModule = __decorate([
         imports: [
             database_module_1.DatabaseModule,
             mongoose_1.MongooseModule.forFeature([{ name: 'Notes', schema: notes_schema_1.NotesSchema }]),
+            auth_module_1.AuthModule,
         ],
         controllers: [notes_controller_1.NotesController],
         providers: [notes_service_1.NotesService],

@@ -66,7 +66,7 @@ let NotesController = class NotesController {
     }
     async deleteNote(response, id) {
         try {
-            const deletedNote = await this.notesService.deleteStudent(id);
+            const deletedNote = await this.notesService.deleteNote(id);
             return response.status(common_1.HttpStatus.OK).json({
                 message: 'Note deleted successfully',
                 deletedNote,

@@ -7,7 +7,6 @@ import { Notes, NotesDocument } from '../schema/notes.schema';
 @Injectable()
 export class NotesService {
     constructor(@InjectModel(Notes.name) private notesModel: Model<NotesDocument>) { }
-    private notes = [];
 
     async createNotes(note: Partial<Notes>): Promise<Notes> {
         const createdNote = new this.notesModel(note);
@@ -26,7 +25,7 @@ export class NotesService {
         return existingNote;
     }
 
-    async deleteStudent(id: ObjectId): Promise<Notes> {
+    async deleteNote(id: ObjectId): Promise<Notes> {
         const deletedNote = await this.notesModel.findByIdAndDelete(id);
         if (!deletedNote) {
             throw new NotFoundException(`Note #${id} not found`);

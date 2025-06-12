@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { NotesComponent } from './notes-component/notes-component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [NotesComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
+  
 })
 export class App { }

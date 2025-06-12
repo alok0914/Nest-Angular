@@ -22,7 +22,6 @@ let NotesService = class NotesService {
     constructor(notesModel) {
         this.notesModel = notesModel;
     }
-    notes = [];
     async createNotes(note) {
         const createdNote = new this.notesModel(note);
         return createdNote.save();
@@ -37,7 +36,7 @@ let NotesService = class NotesService {
         }
         return existingNote;
     }
-    async deleteStudent(id) {
+    async deleteNote(id) {
         const deletedNote = await this.notesModel.findByIdAndDelete(id);
         if (!deletedNote) {
             throw new common_1.NotFoundException(`Note #${id} not found`);
